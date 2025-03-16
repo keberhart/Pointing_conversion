@@ -1,0 +1,27 @@
+[build-system]
+commit = "... " # Replace with your commit hash
+name = "pytest"
+version = "0.0.1"
+
+[project]
+name = "pointing_conversion"
+version = "0.0.1"
+description = "Conversion between XY and azel antenna pointing systems"
+authors = [
+    { name = "Kyle Eberhart"}
+]
+readme = "README.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Development Status :: 3 - Alpha",
+]
+dependencies = [
+    "numpy"
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["./src"]
+addopts = ["-v", "--cov=pointing_conversion --cov-report=xml"]

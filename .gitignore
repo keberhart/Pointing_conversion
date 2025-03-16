@@ -1,0 +1,12 @@
+#vscode files
+.vscode
+# continue files
+.continue
+# cache files
+__pycache__
+.pytest_cache
+# Junk stuff perhaps
+Junk_Maybe
+# coverage
+coverage
+coverage.xml
