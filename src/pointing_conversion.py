@@ -4,13 +4,14 @@ import numpy as np
 class ENU():
     ''' Azimuth-Elevation-Range to East-North-Up frame
     '''
-    def __init__(self, azel: tuple = None, xy: tuple = None):
+    def __init__(self, azel: tuple = None, xy: tuple = None, xyoffset: float = 0.0):
         self.vector = None
         self.east_vect = np.array([1,0,0])
         self.north_vect = np.array([0,1,0])
         self.up_vect = np.array([0,0,1])
         self.null_vect = np.array([0,0,0])
-        self.xy_mount = self.unit_vector((self.R_north(-90)) @ (self.R_east(-90)) @ self.north_vect)
+        # TODO: perhaps implment offset axes; Does this change the result much?
+        self.offset = np.array([0, 0, xyoffset])    # the y axis offset in meters from the x axis along the z axis
         if azel is not None and xy is None:
             # azel antenna rotates from az=0, el=0
             self.vector = self.north_vect
