@@ -41,11 +41,12 @@ class DataGen():
         Returns: the minimum elevation in degrees that respcts the limit.
 
         """
+        #TODO: this has problems! our the search needs to know which way to go. Sometimes the limit is on the low side sometimes on the high side. The azimuth value will give us the hint for which limits to test on each axis.
         if el_max >= el_min:
-            mid = (el_max + el_min) / 3
+            mid = (el_max + el_min) / 2.05
             self.enu.from_azel(azimuth, mid)
             if all(self.test_limits(self.enu.xy)):
-                # this point is above all limits and within the tolorance of 0.05 degrees
+                # this point is inside all limits and within the tolorance of 0.05 degrees
                 return mid
             elif any(self.test_limits(self.enu.xy)):
                 # inside the limits but not close to our edge, reduce the value.
@@ -76,6 +77,7 @@ class DataGen():
         y_lim = math.isclose(y, self.y[0], rel_tol=0.05) or math.isclose(y, self.y[1], rel_tol=0.05)
         if x_lim or y_lim:
             # I think we found our limit
+            print(xy)
             return (True, True)
         # inside the limits but not close
         return (True, False)
