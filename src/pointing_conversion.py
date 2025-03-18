@@ -1,4 +1,9 @@
 import numpy as np
+# FCDAS Blaw-Knox 26M X-Y antenna
+# 1962 survey data: 147° 30' 54.412"W, 64° 58' 37.711"N, 965.95 ft
+# Total height above ground to center of X axis = 44.67 ft
+# Distance of CL of X-axis to CL of Y-axis = 23.00 ft
+
 
 
 class ENU():
